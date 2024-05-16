@@ -58,7 +58,7 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -s -m "Data Update ${{ steps.timestamp.outputs.timestamp }}" -a
-            git push
+            git push --set-upsteam origin update-${{ steps.timestamp.outputs.timestamp }}
           fi
       - name: create pull request
         if: steps.push.outputs.push == 1
