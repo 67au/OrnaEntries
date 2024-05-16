@@ -47,9 +47,6 @@ jobs:
       - name: Gen Item List
         run: |
           python ./crawler/script.py upgradableitems --dir ./crawler/tmp -o ./data/urllist.txt
-          ls .
-          ls ./crawler
-          cat ./data/urllist.txt
       - name: Push changes
         id: push
         shell: bash
@@ -58,6 +55,7 @@ jobs:
           echo "push=0" >> "$GITHUB_OUTPUT"
           if [ ! -z "$(git --no-pager diff --staged)" ]; then
             echo "push=1" >> "$GITHUB_OUTPUT"
+            echo $GITHUB_OUTPUT
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -s -m "Data Update ${{ steps.timestamp.outputs.timestamp }}" -a
