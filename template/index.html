@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="same-origin" />
+  <title>Orna Items</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.27/vue.global.prod.min.js"
+    integrity="sha512-S6p3JDeFUUAPxDGXtffsMdW5aozN1Au8R+6Llg/3406JfPGc5618IXEJANXF3x1Ev5EGef+7z+sLbqYbIC6hDQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/3.6.6/vuetify.min.js"
+    integrity="sha512-LULMdpgqoJTvaa7RPMd/TYwA7RlM8fAIdJ4MuxNi5bjy2SU7Z5jSDSLNgQBipMYr2ZlSkSK5Nz8XdpbE/PVdXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/3.6.6/vuetify.min.css"
+    integrity="sha512-zuMWKcncGj54hrS+GOvzL1lruMTZuLlG+3nPqlK24eQ0qWJPGQJ+/JCfC5EExvIbFabky76yGAoyGOtzBxqRKQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css"
+    integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      transition: background-color 0.25s, color 0.25s;
+      color: #333;
+      background-color: #fff;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .layout {
+      padding: 16px 3px;
+      overflow-y: auto;
+      height: 100vh;
+    }
+
+    .card {
+      width: 90vw;
+      max-width: 768px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <v-theme-provider theme="dark" with-background class="layout" id="main">
+      <v-layout>
+        <v-row cols="24" style="padding-bottom: 44px; margin: 0 auto;" justify="center">
+          <v-card class="card" density="compact">
+            <v-card-title class="d-flex align-center pe-2">
+              Orna Items
+              <v-spacer></v-spacer>
+              <v-text-field v-model="search" density="compact" label="Search" prepend-inner-icon="mdi-magnify"
+                variant="solo-filled" flat hide-details single-line></v-text-field>
+            </v-card-title>
+            <v-divider></v-divider>
+            <v-data-table-virtual density="compact" :headers="headers" :items="dataSource" :search="search"
+              item-value="id" class="mb-4">
+              <template v-slot:item.id="{ item }">
+                <v-btn density="compact" icon="mdi-link" target="_blank" link
+                  :href="`https://codex.fqegg.top/#/codex/items/${item.id}`"></v-btn>
+                {{ item.id }}
+              </template>
+              </v-data-tablevirtual>
+          </v-card>
+        </v-row>
+        <v-footer style="position: fixed; bottom: 0; width: 100%;">
+          <div style="margin: 0 auto;">
+            Test ver.
+            <v-btn density="compact" icon="mdi-arrow-up-bold-box" @click="scrollToTop">
+            </v-btn>
+          </div>
+        </v-footer>
+      </v-layout>
+    </v-theme-provider>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+    const { createVuetify } = Vuetify
+
+    const vuetify = createVuetify()
+    const SCALE_VALUES = {
+      '-1': 'NO',
+      '0': 'UNKNOWN',
+      '1': 'YES'
+    }
+
+    createApp({
+      created() {
+        fetch('/codex/items/meta.json')
+          .then(resp => resp.json())
+          .then(data => {
+            this.dataRaw = data;
+          })
+      },
+      data() {
+        return {
+          search: '',
+          dataRaw: {},
+          headers: [
+            {
+              title: 'ID',
+              key: 'id',
+              value: 'id'
+            },
+            {
+              title: 'BossScale',
+              key: 'boss',
+              value: item => SCALE_VALUES[item.boss],
+            },
+          ],
+        }
+      },
+      computed: {
+        dataSource() {
+          return Object.entries(this.dataRaw).map(([key, value]) => {
+            return {
+              id: key,
+              boss: value['boss']
+            }
+          })
+        }
+      },
+      methods: {
+        scrollToTop() {
+          const t = document.getElementById('main');
+          t.scrollTo(0, 0);
+        }
+      }
+    }).use(vuetify).mount('#app')
+  </script>
+
+</body>
+
+</html>
