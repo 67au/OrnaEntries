@@ -47,11 +47,9 @@ jobs:
       - name: Gen Item List
         run: |
           python ./crawler/script.py upgradableitems --dir ./crawler/tmp -o ./data/urllist.txt
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: codex-data
-          path: ./tmp
+          ls .
+          ls ./crawler
+          cat ./data/urllist.txt
       - name: Push changes
         id: push
         shell: bash
