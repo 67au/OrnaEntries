@@ -1,0 +1,72 @@
+name: Upload Item List
+
+on:
+  # push:
+  #   branches:
+  #     # - main 
+      
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Timestamp
+        id: timestamp
+        run: |
+          echo "timestamp=$(date +%Y%m%d%H%M)" >> "$GITHUB_OUTPUT"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout New Branch
+        run: |
+          git checkout -b update-${{ steps.timestamp.outputs.timestamp }}
+      - name: Checkout OrnaCodexCrawler
+        uses: actions/checkout@v4
+        with: 
+          repository: '67au/OrnaCodexCrawler'
+          path: './crawler'
+      - name: Download Codex from Artifact
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          name: codex-data
+          path: './crawler/tmp'
+          github_token: ${{ secrets.GH_PAT }}
+          workflow: upload-data.yml
+          repo: 67au/OrnaCodexCrawler
+      - name: Setup Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install scrapy
+      - name: Gen Item List
+        run: |
+          python ./crawler/script.py upgradableitems --dir ./crawler/tmp -o ./data/urllist.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-data
+          path: ./tmp
+      - name: Push changes
+        id: push
+        shell: bash
+        run: |
+          git add ./data/itemlist.txt
+          echo "push=0" >> "$GITHUB_OUTPUT"
+          if [ ! -z "$(git --no-pager diff --staged)" ]; then
+            echo "push=1" >> "$GITHUB_OUTPUT"
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -s -m "Data Update ${{ steps.timestamp.outputs.timestamp }}" -a
+          fi
+      - name: create pull request
+        if: steps.push.outputs.push == 1
+        run: |
+          gh pr create -B master -H update-${{ steps.timestamp.outputs.timestamp }} --title 'Merge update-${{ steps.timestamp.outputs.timestamp }} into master' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
