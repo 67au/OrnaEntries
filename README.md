@@ -1,4 +1,6 @@
-# OrnaBossScaleItems
+# OrnaBossItems
+
+Include some data of items
 
 https://items.fqegg.top
 
