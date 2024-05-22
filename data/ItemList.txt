@@ -140,12 +140,12 @@ arisen-cursed-damonas-shield
 arisen-cursed-eostres-circlet
 arisen-cursed-esuss-pillar
 arisen-cursed-fomoria-plated-boots
+arisen-cursed-fomoria-plated-boots-4de3e61d
 arisen-cursed-fomoria-plated-boots-56e4841c
-arisen-cursed-fomoria-plated-boots-7aefba00
 arisen-cursed-fomoria-plated-boots-b2c283ff
 arisen-cursed-fomoria-plated-robe
+arisen-cursed-fomoria-plated-robe-954d6525
 arisen-cursed-fomoria-plated-robe-9a5a1cdd
-arisen-cursed-fomoria-plated-robe-ca4ddba5
 arisen-cursed-fomoria-plated-robe-d5d338d8
 arisen-cursed-fomors-crown
 arisen-cursed-fomors-crown-2cb9b4e6
@@ -564,6 +564,7 @@ chainmail-leggings
 charons-grimoire
 charons-shade-staff
 charons-shadow-staff
+chef-pants
 chestguard-of-dynasty
 chimera-armor
 chimera-greaves
@@ -875,7 +876,7 @@ estoc
 esuss-pillar
 everlasting-torch
 excalibur
-excalibur-32be53bc
+excalibur-eec7bf3e
 eye-of-the-feyger
 fail-not
 fairys-scroll
@@ -1519,6 +1520,9 @@ phoenician-robe
 phoenician-shield
 phoenician-shoes
 phoenixsong
+pizza
+pizza-peel
+pizza-stained-apron
 plagued-cuirass
 plagued-greaves
 plagued-helmet
@@ -1667,6 +1671,11 @@ silver-kris
 simple-hood
 simple-robe
 simple-shoes
+ski-boots
+ski-helmet
+ski-pole
+ski-stick
+ski-suit
 skyshard-dagger
 skyshard-lute
 skyshard-quarterstaff
@@ -1759,6 +1768,7 @@ titan-helmet
 titan-leggings
 tizona
 top-hat
+toque-blanche
 tower-shield
 treecutter
 trenfher
