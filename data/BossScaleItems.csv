@@ -567,7 +567,7 @@ chainmail-leggings,-1
 charons-grimoire,-1
 charons-shade-staff,1
 charons-shadow-staff,1
-chef-pants,0
+chef-pants,1
 chestguard-of-dynasty,1
 chimera-armor,-1
 chimera-greaves,-1
@@ -880,7 +880,7 @@ esuss-pillar,1
 everlasting-torch,-1
 excalibur,1
 excalibur-32be53bc,1
-excalibur-eec7bf3e,0
+excalibur-eec7bf3e,1
 eye-of-the-feyger,1
 fail-not,1
 fairys-scroll,-1
@@ -1524,9 +1524,9 @@ phoenician-robe,1
 phoenician-shield,1
 phoenician-shoes,1
 phoenixsong,1
-pizza,0
-pizza-peel,0
-pizza-stained-apron,0
+pizza,-1
+pizza-peel,1
+pizza-stained-apron,1
 plagued-cuirass,1
 plagued-greaves,1
 plagued-helmet,1
@@ -1675,11 +1675,11 @@ silver-kris,-1
 simple-hood,-1
 simple-robe,-1
 simple-shoes,-1
-ski-boots,0
-ski-helmet,0
-ski-pole,0
-ski-stick,0
-ski-suit,0
+ski-boots,1
+ski-helmet,1
+ski-pole,1
+ski-stick,1
+ski-suit,1
 skyshard-dagger,-1
 skyshard-lute,-1
 skyshard-quarterstaff,-1
@@ -1772,7 +1772,7 @@ titan-helmet,1
 titan-leggings,1
 tizona,1
 top-hat,1
-toque-blanche,0
+toque-blanche,1
 tower-shield,-1
 treecutter,1
 trenfher,1
