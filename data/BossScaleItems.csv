@@ -151,6 +151,7 @@ arisen-cursed-fomoria-plated-robe-9a5a1cdd,1
 arisen-cursed-fomoria-plated-robe-ca4ddba5,1
 arisen-cursed-fomoria-plated-robe-d5d338d8,1
 arisen-cursed-fomors-crown,1
+arisen-cursed-fomors-crown-276564a1,0
 arisen-cursed-fomors-crown-2cb9b4e6,1
 arisen-cursed-fomors-crown-3a4a918b,1
 arisen-cursed-fomors-crown-612a024c,1
@@ -1268,6 +1269,7 @@ jolly-stockings,1
 kaladanda,1
 kerberos-archistaff,1
 kerberos-claws,1
+kerberos-claws-81b67c8d,0
 kerberos-claws-e7f61ea1,1
 kerberos-greatsword,1
 kerberos-hood,1
@@ -1607,6 +1609,8 @@ royal-longbow,-1
 royal-shield,-1
 royalty,-1
 ruby-wand,-1
+ruggieros-armor,0
+ruggieros-helmet,0
 rune-armor,-1
 rune-helmet,-1
 rune-leggings,-1
@@ -1828,6 +1832,11 @@ warlock-staff,-1
 was,1
 whisper,-1
 willow-tree-branch,1
+windtamer-hood,0
+windtamer-lance,0
+windtamer-robe,0
+windtamer-shield,0
+windtamer-shoes,0
 wintara-crested-shield,1
 wisp-staff,-1
 witchs-archistaff,1
