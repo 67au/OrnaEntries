@@ -641,8 +641,8 @@ cursed-damonas-shield
 cursed-eostres-circlet
 cursed-esuss-pillar
 cursed-fomoria-plated-boots
-cursed-fomoria-plated-boots-0ebf6063
 cursed-fomoria-plated-boots-7a9f5efc
+cursed-fomoria-plated-boots-c6787dd8
 cursed-fomoria-plated-boots-e03e2c7a
 cursed-fomoria-plated-robe
 cursed-fomoria-plated-robe-5d09a4d7
